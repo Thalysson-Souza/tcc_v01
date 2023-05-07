@@ -1,8 +1,7 @@
-
 const env = {
-    url: {
-        API_URL: 'http://localhost:3030/',
-    }
+  url: {
+    API_URL: "https://dialogflow-server.onrender.com/",
+  },
 };
 
 export default env;
