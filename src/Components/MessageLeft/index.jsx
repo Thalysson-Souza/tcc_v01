@@ -1,31 +1,9 @@
-import { Avatar, Box, Button, Paper, Typography } from "@mui/material";
+import { Avatar, Box, Button, LinearProgress, Paper, Typography } from "@mui/material";
 import React from "react";
+import DateFormatter from "../../Utils/dateFormatter";
 
 export const MessageLeftComponent = (props) => {
     const msg = props.item;
-
-    // "&:after": {
-    //     content: "''",
-    //     position: "absolute",
-    //     width: "0",
-    //     height: "0",
-    //     borderTop: "15px solid #A8DDFD",
-    //     borderLeft: "15px solid transparent",
-    //     borderRight: "15px solid transparent",
-    //     top: "0",
-    //     left: "-15px"
-    //   },
-    //   "&:before": {
-    //     content: "''",
-    //     position: "absolute",
-    //     width: "0",
-    //     height: "0",
-    //     borderTop: "17px solid #97C6E3",
-    //     borderLeft: "16px solid transparent",
-    //     borderRight: "16px solid transparent",
-    //     top: "-1px",
-    //     left: "-17px"
-    //   }
 
     return (
         <>
@@ -36,11 +14,22 @@ export const MessageLeftComponent = (props) => {
                 >
                     T
                 </Avatar>
-                <Paper elevation={1} sx={{ borderRadius: '5px', width: '80%', padding: '2px', textAlign: 'left' }} >
-                    <Typography variant="body" >
-                        {msg.message}
-                    </Typography>
-                    <Typography variant="body2" textAlign={'right'} color={'secondary'}> {msg.date}</Typography>
+                <Paper elevation={1} sx={{ borderRadius: '5px', width: '80%', padding: '7px', textAlign: 'left' }} >
+                    {msg.isLoading ? (
+                        <>
+                            <LinearProgress />
+                        </>
+                    ) : (
+                        <>
+                            <Typography variant="body" >
+                                {msg.message}
+                            </Typography>
+                            <Typography variant="body2" textAlign={'right'} color={'secondary'}>
+                                {DateFormatter(msg.date, true)}
+                            </Typography>
+                        </>
+                    )
+                    }
                 </Paper>
             </Box>
         </>
